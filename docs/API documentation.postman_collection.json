@@ -1,0 +1,772 @@
+{
+	"info": {
+		"_postman_id": "878cc782-c69e-4b20-9594-27378320c4c3",
+		"name": "API documentation",
+		"description": "This is Udaconnect API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "locations",
+					"item": [
+						{
+							"name": "Create new location record",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"person_id\": 2,\n  \"longitude\": \"80.124052\",\n  \"latitude\": \"-10.571254\",\n  \"creation_time\": \"12:45\",\n  \"id\": 7\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/locations/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"locations",
+										""
+									]
+								},
+								"description": "By putting the correct location data, you can create a new location in the system"
+							},
+							"response": [
+								{
+									"name": "New Location data created",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"person_id\": 2,\n  \"longitude\": \"80.124052\",\n  \"latitude\": \"-10.571254\",\n  \"creation_time\": \"12:45\",\n  \"id\": 7\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/locations/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"locations",
+												""
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"id\": 1,\n    \"person_id\": 1,\n    \"longitude\": \"78.124052\",\n    \"latitude\": \"-4.571254\",\n    \"creation_time\": \"12:45\"\n  },\n  {\n    \"id\": 1,\n    \"person_id\": 1,\n    \"longitude\": \"78.124052\",\n    \"latitude\": \"-4.571254\",\n    \"creation_time\": \"12:45\"\n  }\n]"
+								},
+								{
+									"name": "Bad input",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"person_id\": 2,\n  \"longitude\": \"80.124052\",\n  \"latitude\": \"-10.571254\",\n  \"creation_time\": \"12:45\",\n  \"id\": 7\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/locations/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"locations",
+												""
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Gets location data by id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/locations/location_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"locations",
+										"location_id"
+									],
+									"variable": [
+										{
+											"key": "location_id",
+											"value": "-66007510",
+											"description": "(Required) Numeric ID of the Location to get"
+										}
+									]
+								},
+								"description": "Gets the location information a location id"
+							},
+							"response": [
+								{
+									"name": "Successfully retrieved requested location data",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/locations/location_id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"locations",
+												"location_id"
+											],
+											"variable": [
+												{
+													"key": "location_id",
+													"value": "-66007510",
+													"description": "(Required) Numeric ID of the Location to get"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"id\": 1,\n    \"person_id\": 1,\n    \"longitude\": \"78.124052\",\n    \"latitude\": \"-4.571254\",\n    \"creation_time\": \"12:45\"\n  },\n  {\n    \"id\": 1,\n    \"person_id\": 1,\n    \"longitude\": \"78.124052\",\n    \"latitude\": \"-4.571254\",\n    \"creation_time\": \"12:45\"\n  }\n]"
+								},
+								{
+									"name": "Bad input",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/locations/location_id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"locations",
+												"location_id"
+											],
+											"variable": [
+												{
+													"key": "location_id",
+													"value": "-66007510",
+													"description": "(Required) Numeric ID of the Location to get"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "persons",
+					"item": [
+						{
+							"name": "{person_id}",
+							"item": [
+								{
+									"name": "Gets person information by id",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/persons/:person_id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"persons",
+												":person_id"
+											],
+											"variable": [
+												{
+													"key": "person_id",
+													"value": "-66007510",
+													"description": "(Required) Numeric ID of the person to get"
+												}
+											]
+										},
+										"description": "Gets person information by id"
+									},
+									"response": [
+										{
+											"name": "Search operation successful",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/persons/:person_id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"persons",
+														":person_id"
+													],
+													"variable": [
+														{
+															"key": "person_id",
+															"value": "-66007510",
+															"description": "(Required) Numeric ID of the person to get"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "[\n  {\n    \"id\": 1,\n    \"first_name\": \"Paul\",\n    \"last_name\": \"McAfee\",\n    \"company_name\": \"Helios\"\n  },\n  {\n    \"id\": 1,\n    \"first_name\": \"Paul\",\n    \"last_name\": \"McAfee\",\n    \"company_name\": \"Helios\"\n  }\n]"
+										},
+										{
+											"name": "bad input parameter",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/persons/:person_id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"persons",
+														":person_id"
+													],
+													"variable": [
+														{
+															"key": "person_id",
+															"value": "-66007510",
+															"description": "(Required) Numeric ID of the person to get"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Company not found",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/persons/:person_id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"persons",
+														":person_id"
+													],
+													"variable": [
+														{
+															"key": "person_id",
+															"value": "-66007510",
+															"description": "(Required) Numeric ID of the person to get"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "Gets person's connections based on his/her id",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/persons/:person_id/connection?distance=&end_date=&start_date=",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"persons",
+												":person_id",
+												"connection"
+											],
+											"query": [
+												{
+													"key": "distance",
+													"value": "",
+													"description": "Distance to a given user in meters"
+												},
+												{
+													"key": "end_date",
+													"value": "",
+													"description": "End date"
+												},
+												{
+													"key": "start_date",
+													"value": "",
+													"description": "Start date"
+												}
+											],
+											"variable": [
+												{
+													"key": "person_Id",
+													"value": "",
+													"description": "(Required) Numeric ID of the person to get his/her connections"
+												}
+											]
+										},
+										"description": "Gets person's connections based on his/her id"
+									},
+									"response": [
+										{
+											"name": "Get connections operation successful",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/persons/:person_id/connection?distance=&end_date=&start_date=",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"persons",
+														":person_id",
+														"connection"
+													],
+													"query": [
+														{
+															"key": "distance",
+															"value": ""
+														},
+														{
+															"key": "end_date",
+															"value": ""
+														},
+														{
+															"key": "start_date",
+															"value": ""
+														}
+													],
+													"variable": [
+														{
+															"key": "person_Id",
+															"value": "",
+															"description": "(Required) Numeric ID of the person to get his/her connections"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "[\n  {\n    \"id\": 1,\n    \"start_date\": \"12 June\",\n    \"end_date\": \"14 July\",\n    \"distance\": \"Helios\"\n  },\n  {\n    \"id\": 1,\n    \"start_date\": \"12 June\",\n    \"end_date\": \"14 July\",\n    \"distance\": \"Helios\"\n  }\n]"
+										},
+										{
+											"name": "bad input parameter",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/persons/:person_id/connection?distance=&end_date=&start_date=",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"persons",
+														":person_id",
+														"connection"
+													],
+													"query": [
+														{
+															"key": "distance",
+															"value": ""
+														},
+														{
+															"key": "end_date",
+															"value": ""
+														},
+														{
+															"key": "start_date",
+															"value": ""
+														}
+													],
+													"variable": [
+														{
+															"key": "person_Id",
+															"value": "",
+															"description": "(Required) Numeric ID of the person to get his/her connections"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Gets all people data",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/persons",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"persons"
+									]
+								},
+								"description": "Gets the people information for all users in the PersonAPI"
+							},
+							"response": [
+								{
+									"name": "Successfully retrieved requested persons data",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/persons",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"persons"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"id\": 1,\n    \"first_name\": \"Paul\",\n    \"last_name\": \"McAfee\",\n    \"company_name\": \"Helios\"\n  },\n  {\n    \"id\": 1,\n    \"first_name\": \"Paul\",\n    \"last_name\": \"McAfee\",\n    \"company_name\": \"Helios\"\n  }\n]"
+								},
+								{
+									"name": "Bad input",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/persons",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"persons"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Requested company data was not found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/persons",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"persons"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Create new person's record",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"first_name\": \"Marvel\",\n  \"last_name\": \"Sonife\",\n  \"company_name\": \"Mercedes\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/persons",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"persons"
+									]
+								},
+								"description": "By putting the correct payload, you can create a new person in the system"
+							},
+							"response": [
+								{
+									"name": "New person data created",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"first_name\": \"Marvel\",\n  \"last_name\": \"Sonife\",\n  \"company_name\": \"Mercedes\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/persons",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"persons"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"id\": 1,\n    \"first_name\": \"Paul\",\n    \"last_name\": \"McAfee\",\n    \"company_name\": \"Helios\"\n  },\n  {\n    \"id\": 1,\n    \"first_name\": \"Paul\",\n    \"last_name\": \"McAfee\",\n    \"company_name\": \"Helios\"\n  }\n]"
+								},
+								{
+									"name": "Bad input",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"first_name\": \"Marvel\",\n  \"last_name\": \"Sonife\",\n  \"company_name\": \"Mercedes\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/persons",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"persons"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "/",
+			"type": "string"
+		}
+	]
+}

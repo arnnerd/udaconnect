@@ -1,0 +1,40 @@
+gRPC Documentation
+==================
+
+Location data should use this form from the protobuf definition:
+
+```
+message LocationMessage {
+    int32 person_id = 1;
+    string latitude = 2;
+    string longitude = 3;
+}
+```
+
+e.g. 
+
+```
+{
+    "person_id" : 3,
+     "latitude" : "4.4578216",
+     "longitude": "-0.587521"
+}
+```
+
+The gRPC server is hosted on the udaconnect-location-gulp  microservice on port 5005.
+One can use grpc_client.py in the microservice to illustrate sending location data to the server
+
+To test, run the following commands:
+
+```
+export LOCATION_GULP_POD=$(kubectl get pods --namespace default -l "app=udaconnect-location-gulp" -o jsonpath="{.items[0].metadata.name}")
+
+kubectl exec -it $LOCATION_GULP_POD sh
+```
+The above command is to enter the udaconnect-location-gulp pod.
+
+One inside the pod, we can run the following command:
+
+```
+python grpc_client.py
+```

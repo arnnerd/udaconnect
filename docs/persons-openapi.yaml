@@ -1,0 +1,113 @@
+openapi: 3.0.0
+info: 
+  description: This is Udaconnect Persons API
+  version: "0.1.0"
+  title: Persons API documentation
+paths:
+  /api/persons:
+    get:
+      summary: Gets all people data
+      operationId: getAllPersons
+      description: Gets the people information for all users in the PersonAPI
+      responses:
+        '200':
+          description: Successfully retrieved requested persons data
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Person'
+        '400':
+          description: Bad input 
+        '404':
+          description: Requested company data was not found
+    
+    post:
+      summary: Create new person's record
+      description: By putting the correct payload, you can create a new person in the system
+      operationId: createPerson
+      requestBody:
+        description: Optional description given
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PersonNoId'
+        required: true
+      responses:
+        '201':
+          description: New person data created
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Person'
+        '400':
+          description: Bad input
+
+  /api/persons/{person_id}:
+    get:
+      summary: Gets person information by id
+      description: Gets person information by id
+      operationId: getPersonById
+      parameters:
+      - name: person_id
+        in: path
+        description: Numeric ID of the person to get
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Search operation successful
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Person'
+        '400':
+          description: bad input parameter
+        '404':
+          description: Company not found
+components:
+  schemas:
+    Person:
+      type: object
+      required:
+        - id
+        - first_name
+        - last_name
+        - company_name
+      properties:
+        id:
+          type: Integer
+          example: 1
+        first_name:
+          type: string
+          example: Paul
+        last_name:
+          type: string
+          example: McAfee
+        company_name:
+         type: string
+         example: Helios
+    PersonNoId:
+      type: object
+      required:
+        - first_name
+        - last_name
+        - company_name
+      properties:
+        first_name:
+          type: string
+          example: Marvel
+        last_name:
+          type: string
+          example: Sonife
+        company_name:
+         type: string
+         example: Mercedes

@@ -1,0 +1,268 @@
+openapi: 3.0.0
+info: 
+  description: This is Udaconnect API
+  version: "0.1.0"
+  title: API documentation
+paths:
+  /api/locations/location_id:
+    get:
+      summary: Gets location data by id
+      operationId: getLocationData
+      description: Gets the location information a location id
+      parameters:
+      - name: location_id
+        in: path
+        description: Numeric ID of the Location to get
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successfully retrieved requested location data
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Location'
+        '400':
+          description: Bad input 
+        
+  /api/locations/:  
+    post:
+      summary: Create new location record
+      description: By putting the correct location data, you can create a new location in the system
+      operationId: createLocation
+      requestBody:
+        description: Optional description given
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LocationNoId'
+        required: true
+      responses:
+        '201':
+          description: New Location data created
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Location'
+        '400':
+          description: Bad input
+
+  /api/persons:
+    get:
+      summary: Gets all people data
+      operationId: getAllPersons
+      description: Gets the people information for all users in the PersonAPI
+      responses:
+        '200':
+          description: Successfully retrieved requested persons data
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Person'
+        '400':
+          description: Bad input 
+        '404':
+          description: Requested company data was not found
+    
+    post:
+      summary: Create new person's record
+      description: By putting the correct payload, you can create a new person in the system
+      operationId: createPerson
+      requestBody:
+        description: Optionel description given
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PersonNoId'
+        required: true
+      responses:
+        '201':
+          description: New person data created
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Person'
+        '400':
+          description: Bad input
+
+  /api/persons/{person_id}:
+    get:
+      summary: Gets person information by id
+      description: Gets person information by id
+      operationId: getPersonById
+      parameters:
+      - name: person_id
+        in: path
+        description: Numeric ID of the person to get
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Search operation successful
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Person'
+        '400':
+          description: bad input parameter
+        '404':
+          description: Company not found
+
+  /api/persons/{person_id}/connection:
+    get:
+      summary: Gets person's connections based on his/her id
+      description: Gets person's connections based on his/her id
+      operationId: getConnectionDataResource
+      parameters:
+      - name: person_Id
+        in: path
+        description: Numeric ID of the person to get his/her connections
+        required: true
+        type: string
+      - name: distance
+        in: query
+        description: Distance to a given user in meters
+        type: string
+      - name: end_date
+        in: query
+        description: End date
+        type: string
+      - name: start_date
+        in: query
+        description: Start date
+        type: string
+      responses:
+        '200':
+          description: Get connections operation successful
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Connections'
+        '400':
+          description: bad input parameter
+
+components:
+  schemas:
+    Location:
+      type: object
+      required:
+        - id
+        - person_id
+        - longitude
+        - latitude
+        - creation_time
+      properties:
+        id:
+          type: Integer
+          example: 1
+        person_id:
+          type: Integer
+          example: 1
+        longitude:
+          type: string
+          example: "78.124052"
+        latitude:
+          type: string
+          example: "-4.571254"
+        creation_time:
+         type: string
+         example: "12:45"
+    LocationNoId:
+      type: object
+      required:
+        - person_id
+        - longitude
+        - latitude
+        - creation_time
+      properties:
+        id:
+          type: Integer
+          example: 7
+        person_id:
+          type: Integer
+          example: 2
+        longitude:
+          type: string
+          example: "80.124052"
+        latitude:
+          type: string
+          example: "-10.571254"
+        creation_time:
+         type: string
+         example: "12:45"
+
+    Person:
+      type: object
+      required:
+        - id
+        - first_name
+        - last_name
+        - company_name
+      properties:
+        id:
+          type: Integer
+          example: 1
+        first_name:
+          type: string
+          example: Paul
+        last_name:
+          type: string
+          example: McAfee
+        company_name:
+         type: string
+         example: Helios
+    PersonNoId:
+      type: object
+      required:
+        - first_name
+        - last_name
+        - company_name
+      properties:
+        first_name:
+          type: string
+          example: Marvel
+        last_name:
+          type: string
+          example: Sonife
+        company_name:
+         type: string
+         example: Mercedes
+
+    Connections:
+      type: object
+      required:
+        - id
+        - start_date
+        - end_date
+        - distance
+      properties:
+        id:
+          type: Integer
+          example: 1
+        start_date:
+          type: string
+          example: "12 June"
+        end_date:
+          type: string
+          example: "14 July"
+        distance:
+         type: string
+         example: Helios

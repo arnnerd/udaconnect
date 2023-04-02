@@ -1,0 +1,63 @@
+openapi: 3.0.0
+info: 
+  description: This is Udaconnect Connections API
+  version: "0.1.0"
+  title: Connections API documentation
+paths:
+  /api/persons/{person_id}/connection:
+    get:
+      summary: Gets person's connections based on his/her id
+      description: Gets person's connections based on his/her id
+      operationId: getConnectionDataResource
+      parameters:
+      - name: person_Id
+        in: path
+        description: Numeric ID of the person to get his/her connections
+        required: true
+        type: string
+      - name: distance
+        in: query
+        description: Distance to a given user in meters
+        type: string
+      - name: end_date
+        in: query
+        description: End date
+        type: string
+      - name: start_date
+        in: query
+        description: Start date
+        type: string
+      responses:
+        '200':
+          description: Get connections operation successful
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Connections'
+        '400':
+          description: bad input parameter
+        
+components:
+  schemas:
+    Connections:
+      type: object
+      required:
+        - id
+        - start_date
+        - end_date
+        - distance
+      properties:
+        id:
+          type: Integer
+          example: 1
+        start_date:
+          type: string
+          example: "12 June"
+        end_date:
+          type: string
+          example: "14 July"
+        distance:
+         type: string
+         example: Helios
