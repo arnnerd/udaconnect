@@ -6,7 +6,7 @@ metadata:
   name: udaconnect-connections-api
 spec:
   ports:
-  - name: 5000:30002
+  - name: "5000-30002"
     nodePort: 30002
     port: 5000
     protocol: TCP

@@ -6,7 +6,7 @@ metadata:
   name: udaconnect-persons-api
 spec:
   ports:
-  - name: 5000-30003
+  - name: "5000-30003"
     port: 5000
     protocol: TCP
     targetPort: 5000
