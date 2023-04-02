@@ -1,4 +1,20 @@
 # UdaConnect
+
+Project structure
+* Project documentation in docs/ folder. It contains
+- Architecture diagram and decision choice
+- How to run the Kafka servers
+- How to run gRPC
+- pods screenshots, services screenshots
+- OpenAPI documentation
+- postman library
+
+* all codes for different microservices are found in modules/ folder
+
+* deployment folder contains kubernetes configs 
+
+For details about the steps to take to run the project, see project instructions below.
+
 ## Overview
 ### Background
 Conferences and conventions are hotspots for making connections. Professionals in attendance often share the same interests and can make valuable business and personal connections with one another. At the same time, these events draw a large crowd and it's often hard to make these connections in the midst of all of these events' excitement and energy. To help attendees make connections, we are building the infrastructure for a service that can inform attendees if they have attended the same booths and presentations at an event.
