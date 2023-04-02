@@ -13,12 +13,12 @@ non_existing_person_ids = [879, 45]
 
 fake = faker.Faker()
 
-def randomFloatStr():
+def randomFloatString():
     return str(fake.pyfloat(1))
 
 # Send the desired payload to existing and non-existing people
 payloads_list = [
-    location_pb2.LocationMessage(person_id=b, latitude=randomFloatStr(), longitude=randomFloatStr()) for a in [preloaded_person_ids, non_existing_person_ids] for b in a
+    location_pb2.LocationMessage(person_id=b, latitude=randomFloatString(), longitude=randomFloatString()) for a in [preloaded_person_ids, non_existing_person_ids] for b in a
     ]
 
 for location in payloads_list:

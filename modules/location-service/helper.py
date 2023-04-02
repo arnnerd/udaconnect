@@ -17,7 +17,7 @@ DB_NAME = os.environ["DB_NAME"]
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("udaconnect-location-service")
 
-def save_location(location):
+def save_set_location(location):
     # Verify if a dictionary was provided
     try:
         location_dict : Dict = json.loads(location)

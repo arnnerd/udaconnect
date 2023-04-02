@@ -1,5 +1,5 @@
 from concurrent import futures
- from helper import publish_location
+from helper import publish_set_location
 
 import grpc
 import location_pb2
@@ -17,7 +17,7 @@ class LocationGulpServicer(location_pb2_grpc.LocationServiceServicer):
 
         print(f"Payload: {payload} ")
 
-        publish_location(payload)
+        publish_set_location(payload)
         return location_pb2.LocationMessage(**payload)
     
 # Intiialize gRPC server

@@ -16,7 +16,7 @@ logger = logging.getLogger("udaconnect-location-gulp-service")
 producer = KafkaProducer(bootstrap_servers=[KAFKA_SERVER])
 
 # function used to publish user's location
-def publish_location(location_data):
+def publish_set_location(location_data):
 
     print(f"Data, {location_data}, will be sent to kafka.")
 
